@@ -1,0 +1,54 @@
+#注意：如果在记事本上编写，下面的缩进不要使用Tab来缩进，不然报错
+spring:
+  profiles:
+    active: dev-server001 # 激活开发环境配置
+---
+server:
+  port: 6001
+
+spring:
+  profiles: dev001
+  application:
+    name: eureka-server001
+
+eureka:
+  instance:
+    #    hostname: localhost # eureka服务端的实例名称（单击版）
+    hostname: eureka6001.com
+  server:
+    enable-self-preservation: false # 禁用自我保护模式（开发模式）
+
+  client:
+    registerWithEureka: false # 服务注册，false表示不将自已注册到Eureka服务中
+    fetchRegistry: false # 服务发现，false表示自己不从Eureka服务中获取注册信息
+    serviceUrl:
+      # # Eureka客户端与Eureka服务端的交互地址，集群版配置对方的地址，单机版配置自己（如果不配置则默认本机8761端口）
+      # 单击版
+      #      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      # 集群版  配置其他的Eureka Server服务端访问地址，有多个注册中心，用逗号隔开（这里是三台注册注册中心）
+      defaultZone: http://eureka6002.com:6002/eureka/ # ,http://eureka6003.com:6003/eureka/
+---
+server:
+  port: 6002
+
+spring:
+  profiles: dev002
+  application:
+    name: eureka-server002
+
+eureka:
+  instance:
+    #    hostname: localhost # eureka服务端的实例名称（单击版）
+    hostname: eureka6002.com
+  server:
+    enable-self-preservation: false # 禁用自我保护模式（开发模式）
+
+  client:
+    registerWithEureka: false # 服务注册，false表示不将自已注册到Eureka服务中
+    fetchRegistry: false # 服务发现，false表示自己不从Eureka服务中获取注册信息
+    serviceUrl:
+      # # Eureka客户端与Eureka服务端的交互地址，集群版配置对方的地址，单机版配置自己（如果不配置则默认本机8761端口）
+      # 单击版
+      #      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      # 集群版  配置其他的Eureka Server服务端访问地址，有多个注册中心，用逗号隔开（这里是三台注册注册中心）
+      defaultZone: http://eureka6001.com:6001/eureka/ # ,http://eureka6003.com:6003/eureka/
