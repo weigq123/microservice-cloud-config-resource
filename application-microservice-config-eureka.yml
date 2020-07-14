@@ -4,7 +4,7 @@ spring:
     active: dev001 # 激活开发环境配置
 ---
 server:
-  port: 6001
+  port: 60015
 
 spring:
   profiles: dev001
