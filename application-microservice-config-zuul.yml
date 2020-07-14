@@ -41,6 +41,7 @@ zuul:
       # 例如:为true时，请求 /product/get/1，代理转发到/get/1
       stripPrefix: false
 
+
     # 如果多个服务需要经过路由，则同povider-product方式继续添加
     # 订单服务
     provider-order:
